@@ -8,9 +8,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
-:root{--bg:#f7f3ec;--ink:#2b2a28;--sub:#6b655c;--line:#d9cfc0;--bronze:#9a7448;--card:#fffdf9}
+:root{--bg:#141218;--ink:#ece8f2;--sub:#b4aac4;--line:#3a3146;--bronze:#b08cdc;--card:#1f1a28}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:'Noto Sans KR',sans-serif;line-height:1.8}
+body{margin:0;background:linear-gradient(160deg,#121114 0%,#1d1626 50%,#2a1b3d 100%) fixed;color:var(--ink);font-family:'Noto Sans KR',sans-serif;line-height:1.8}
 header{padding:22px 6vw;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
 header a{color:var(--ink);text-decoration:none;font-family:'Noto Serif KR',serif;font-weight:600;letter-spacing:.05em}
 header nav a{margin-left:20px;font-size:14px;color:var(--sub)}
@@ -24,13 +24,13 @@ p{margin:10px 0}
 .step{background:var(--card);border-left:3px solid var(--bronze);padding:14px 20px;margin:12px 0;border-radius:2px}
 .qa{background:var(--card);border:1px solid var(--line);padding:18px 22px;margin:12px 0;border-radius:4px}
 .qa b{color:var(--bronze)}
-.video{background:#ece5d8;border:1px dashed var(--bronze);height:300px;display:flex;align-items:center;justify-content:center;color:var(--sub);border-radius:4px;margin:20px 0}
+.video{background:#2a2530;border:1px dashed var(--bronze);height:300px;display:flex;align-items:center;justify-content:center;color:var(--sub);border-radius:4px;margin:20px 0}
 .note{color:var(--sub);font-size:14px}
 .back{display:inline-block;margin-top:40px;color:var(--bronze);text-decoration:none;font-size:14px}
 #comments{margin-top:56px;border-top:1px solid var(--line);padding-top:28px}
 #comments h2{border:none;margin-top:0}
 form.cform{display:grid;gap:10px;margin:16px 0 26px}
-.reply{margin-top:12px;padding:12px 16px;background:#f7f3ec;border-left:3px solid #9a7448;border-radius:2px}
+.reply{margin-top:12px;padding:12px 16px;background:linear-gradient(160deg,#121114 0%,#1d1626 50%,#2a1b3d 100%) fixed;border-left:3px solid #b08cdc;border-radius:2px}
 .rform{display:grid;gap:8px;margin-top:10px}
 .rform textarea{min-height:60px}
 .rform button{font-size:13px;padding:6px 14px}
@@ -43,9 +43,32 @@ button:hover{background:var(--bronze)}
 .c .body{white-space:pre-wrap}
 .empty{color:var(--sub);font-size:14px}
 footer{text-align:center;color:var(--sub);font-size:13px;padding:30px}
+
+.deco{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.deco .staff{position:absolute;left:0;top:0;width:100%;height:100%;opacity:.9}
+header,main,footer,section,.wrap,.container{position:relative;z-index:1}
 </style>
 </head>
 <body>
+<div class="deco" aria-hidden="true">
+  <svg class="staff" viewBox="0 0 1200 600" preserveAspectRatio="none">
+    <g stroke="#b08cdc" stroke-opacity=".18" stroke-width="1.2">
+      <line x1="0" y1="120" x2="1200" y2="120"/><line x1="0" y1="140" x2="1200" y2="140"/>
+      <line x1="0" y1="160" x2="1200" y2="160"/><line x1="0" y1="180" x2="1200" y2="180"/>
+      <line x1="0" y1="200" x2="1200" y2="200"/>
+    </g>
+    <g fill="none" stroke="#b08cdc" stroke-opacity=".22" stroke-width="2">
+      <path d="M80 300 C 200 240, 300 360, 420 300 S 640 240, 760 300 S 980 360, 1120 290"/>
+    </g>
+    <g fill="#b08cdc" fill-opacity=".22">
+      <ellipse cx="160" cy="420" rx="14" ry="10" transform="rotate(-20 160 420)"/>
+      <rect x="172" y="330" width="2.5" height="90"/>
+      <ellipse cx="1040" cy="200" rx="14" ry="10" transform="rotate(-20 1040 200)"/>
+      <rect x="1052" y="110" width="2.5" height="90"/>
+    </g>
+  </svg>
+</div>
+
 <header>
   <a href="index.html">훈루트 (Hoon Route)</a>
   <nav><a href="index.html#about">소개</a><a href="index.html#lessons">강의</a><a href="index.html#contact">연락</a></nav>
