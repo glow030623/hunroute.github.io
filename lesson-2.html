@@ -47,6 +47,23 @@ footer{text-align:center;color:var(--sub);font-size:13px;padding:30px}
 .deco{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
 .deco .staff{position:absolute;left:0;top:0;width:100%;height:100%;opacity:.9}
 header,main,footer,section,.wrap,.container{position:relative;z-index:1}
+
+#comments{background:#f7f3ec;color:#2b2a28;border-radius:6px;padding:24px 22px;margin-top:40px;border:1px solid #3a3146}
+#comments h2{color:#2b2a28}
+#comments .note{color:#6b655c}
+#disqus_thread{color:#2b2a28}
+/* mobile */
+html{-webkit-text-size-adjust:100%}
+img,video,audio,iframe{max-width:100%}
+.deco{display:none}
+@media (max-width:640px){
+  header{flex-direction:column;align-items:flex-start;gap:10px}
+  .grid{grid-template-columns:1fr !important}
+  .deco{display:block}
+  main{padding-left:5vw;padding-right:5vw}
+  h1{font-size:1.6rem}
+  iframe{height:200px}
+}
 </style>
 </head>
 <body>
