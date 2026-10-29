@@ -90,46 +90,23 @@ header,main,footer,section,.wrap,.container{position:relative;z-index:1}
   <section id="comments">
     <h2>댓글</h2>
     <p class="note">이 강의에 대한 질문을 남겨 주세요.</p>
-    <form id="cform" class="cform">
-      <input name="name" placeholder="닉네임" maxlength="20">
-      <textarea name="text" placeholder="질문이나 의견을 남겨 주세요" required></textarea>
-      <button type="submit">댓글 남기기</button>
-    </form>
-    <div id="clist"></div>
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_config = function () {
+      this.page.url = location.href;
+      this.page.identifier = location.pathname;
+    };
+    (function() {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://hunroute-1.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+    </script>
+    <noscript>댓글을 보려면 자바스크립트를 켜 주세요.</noscript>
   </section>
 </main>
 <footer>상담은 디스코드 ljh_1004 로 연락해 주세요.</footer>
-<script>
-(function(){
-  var key='hoonroute-comments-'+(location.pathname.split('/').pop()||'index');
-  var list=document.getElementById('clist');
-  var form=document.getElementById('cform');
-  function load(){try{return JSON.parse(localStorage.getItem(key))||[]}catch(e){return []}}
-  function save(a){localStorage.setItem(key,JSON.stringify(a))}
-  function render(){
-    var a=load(); list.innerHTML='';
-    if(!a.length){var e=document.createElement('p');e.className='empty';e.textContent='아직 댓글이 없습니다. 첫 질문을 남겨 보세요.';list.appendChild(e);return}
-    a.slice().reverse().forEach(function(c){
-      var d=document.createElement('div');d.className='c';
-      var m=document.createElement('div');m.className='meta';m.textContent=c.name+' · '+c.time;
-      var b=document.createElement('div');b.className='body';b.textContent=c.text;
-      d.appendChild(m);d.appendChild(b);
-      if(c.reply){var r=document.createElement('div');r.className='reply';var rm=document.createElement('div');rm.className='meta';rm.textContent='훈루트 답변 · '+c.reply.time;var rb=document.createElement('div');rb.className='body';rb.textContent=c.reply.text;r.appendChild(rm);r.appendChild(rb);d.appendChild(r);}
-      var rf=document.createElement('form');rf.className='rform';rf.innerHTML='<textarea placeholder="답변 입력 (관리자용)" required></textarea><button type="submit">답변 남기기</button>';
-      rf.addEventListener('submit',function(ev){ev.preventDefault();var t=rf.querySelector('textarea').value.trim();if(!t)return;var a=load();var i=a.findIndex(function(x){return x.time===c.time&&x.text===c.text});if(i>=0){a[i].reply={text:t,time:new Date().toLocaleString('ko-KR')};save(a);render();}});
-      d.appendChild(rf);
-      list.appendChild(d);
-    });
-  }
-  form.addEventListener('submit',function(ev){
-    ev.preventDefault();
-    var n=form.name.value.trim()||'익명', t=form.text.value.trim();
-    if(!t) return;
-    var a=load(); a.push({name:n,text:t,time:new Date().toLocaleString('ko-KR')}); save(a);
-    form.text.value=''; render();
-  });
-  render();
-})();
-</script>
+
 </body>
 </html>
